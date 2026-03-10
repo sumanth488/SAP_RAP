@@ -1,0 +1,56 @@
+managed implementation in class zbp_i_students unique;
+strict ( 2 );
+
+define behavior for ZI_STUDENTS alias StudentDetails
+persistent table zms_student
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create ( authorization : global );
+  update;
+  delete;
+
+  association _acadamic { create; }
+
+  field ( numbering : managed, readonly ) Id;
+  field ( readonly ) Genderdesc;
+  action ( features : instance ) setAdmitted result [1] $self;
+  validation validateage on save { field Age; create; }
+
+  mapping for zms_student
+    {
+      Id             = id;
+      Firstname      = firstname;
+      Lastname       = lastname;
+      Dob            = dob;
+      Gender         = gender;
+      Age            = age;
+      Course         = course;
+      Courseduration = courseduration;
+      Status         = status;
+      Createdon      = createdon;
+      Lastchangedat  = lastchangedat;
+    }
+}
+
+define behavior for Z_ACADAMIC_RESULT alias AcadamicResult
+persistent table zacadamic_result
+
+lock dependent by _student
+authorization dependent by _student
+{
+
+  update;
+  delete;
+  association _student;
+
+  field ( readonly ) Id;
+  field ( readonly ) course_desc;
+  field ( readonly ) semester_desc;
+  field ( readonly ) semres_desc;
+
+
+
+
+}

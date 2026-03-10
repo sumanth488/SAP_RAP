@@ -1,0 +1,158 @@
+@Metadata.layer: #PARTNER
+
+@UI:{ headerInfo: {
+          typeName: 'Student',
+          typeNamePlural: 'Students',
+          title: {
+              type: #STANDARD,
+              label: 'Student',
+              value: 'Id'
+          }
+      } }
+annotate entity ZI_STUDENTS with
+{
+
+  @UI.facet: [{
+      id: 'Student',
+      purpose: #STANDARD,
+      position: 10,
+      label: 'Student',
+      type:#IDENTIFICATION_REFERENCE
+  },
+
+  {
+  id:'AcadamicResult',
+  purpose: #STANDARD,
+  type: #LINEITEM_REFERENCE,
+  label: 'AcadamicResult',
+  position: 20,
+  targetElement: '_acadamic'
+  }
+
+  ]
+  @UI:{ lineItem: [{
+            position: 10,
+            type: #STANDARD,
+            label: 'StudentId'
+        }],identification: [{
+               position: 10,
+               type: #STANDARD,
+               label: 'StudentId'
+           }],selectionField: [{
+                  position: 10
+
+              } ]  }
+  Id;
+  @UI:{ lineItem: [{
+            position: 20,
+            type: #STANDARD,
+            label: 'FirstName'
+        }],identification: [{
+               position: 20,
+               type: #STANDARD,
+               label: 'FirstName'
+           }],selectionField: [{
+                  position: 20
+              } ]  }
+  Firstname;
+  @UI:{ lineItem: [{
+            position: 30,
+            type: #STANDARD,
+            label: 'LastName'
+        }],identification: [{
+               position: 30,
+               type: #STANDARD,
+               label: 'LastName'
+           }],selectionField: [{
+                  position: 30
+              } ]  }
+  Lastname;
+  @UI:{ lineItem: [{
+          position: 40,
+          type: #STANDARD,
+          label: 'Dob'
+      }],identification: [{
+             position: 40,
+             type: #STANDARD,
+             label: 'Dob'
+         }] }
+  Dob;
+  @UI:{ lineItem: [{
+        position: 50,
+        type: #STANDARD,
+        label: 'Age'
+    }],identification: [{
+           position: 50,
+           type: #STANDARD,
+           label: 'Age'
+       }] }
+  Age;
+  @UI:{ lineItem: [{
+        position: 60,
+        type: #STANDARD,
+        label: 'Course'
+    }],identification: [{
+           position: 60,
+           type: #STANDARD,
+           label: 'Course'
+       }] }
+  Course;
+  @UI:{ lineItem: [{
+        position: 70,
+        type: #STANDARD,
+        label: 'Courseduration'
+    }],identification: [{
+           position: 70,
+           type: #STANDARD,
+           label: 'Courseduration'
+       }] }
+  Courseduration;
+  @UI:{ lineItem: [{
+        position: 80,
+        type: #STANDARD,
+        label: 'Status'
+    },{ type:#FOR_ACTION,dataAction: 'setAdmitted',label: 'setAdmitted' }],identification: [{
+           position: 80,
+           type: #STANDARD,
+           label: 'Status'
+       },{ type:#FOR_ACTION,dataAction: 'setAdmitted',label: 'setAdmitted' }] }
+  Status;
+  @UI:{ lineItem: [{
+        position: 90,
+        type: #STANDARD,
+        label: 'Gender'
+    }],identification: [{
+           position: 90,
+           type: #STANDARD,
+           label: 'Gender'
+       }] }
+
+  @Consumption.valueHelpDefinition: [{
+      qualifier: '',
+      entity: {
+          name: 'ZIGENDER',
+          element: 'value'
+      },
+      distinctValues: true,
+      additionalBinding: [{
+          localElement: 'Genderdesc',
+          element: 'dicsription'
+      }]
+  }]
+  Gender;
+  @UI:{ lineItem: [{
+        position: 100,
+        type: #STANDARD,
+        label: ''
+    }],identification: [{
+           position: 100,
+           type: #STANDARD,
+           label: ''
+       }] }
+  Genderdesc;
+  @UI.hidden: true
+  Createdon;
+  @UI.hidden: true
+  Lastchangedat;
+
+}

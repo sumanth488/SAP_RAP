@@ -1,0 +1,5 @@
+@EndUserText.label: 'Expose the student details'
+define service ZSTUD_EXPOSE {
+  expose ZI_STUDENTS       as StudentDetails;
+  expose Z_ACADAMIC_RESULT as AcadamicResult;
+}

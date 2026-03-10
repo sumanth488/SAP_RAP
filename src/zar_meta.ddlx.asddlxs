@@ -1,0 +1,135 @@
+@Metadata.layer: #PARTNER
+
+@UI:{ headerInfo: {
+          typeName: 'Acadamic Result Detail',
+          typeNamePlural: 'Acadamic Result Detail',
+          title: {
+              type: #STANDARD,
+              label: 'Acadamic Result Detail'
+          },
+          description: {
+              type: #STANDARD,
+              label: 'Acadamic Result Detail'
+          }
+      } }
+@Search.searchable: true
+annotate entity Z_ACADAMIC_RESULT with
+{
+
+  @UI.facet: [{
+      id: 'Acadmic',
+      purpose: #STANDARD,
+      position: 10,
+      label: 'Acadamic Result Detail',
+      type: #IDENTIFICATION_REFERENCE
+  }]
+
+  @UI:{ lineItem: [{
+          position: 20,
+          type: #STANDARD,
+          label: 'StudentId'
+      }],identification: [{
+             position: 20,
+             label: 'StudentId'
+         }] }
+  Id;
+  @UI:{ lineItem: [{
+          position: 30,
+          type: #STANDARD,
+          label: 'Course'
+      }],identification: [{
+             position: 30,
+             label: 'Course'
+         }] }
+  @Search.defaultSearchElement: true
+
+  @Consumption.valueHelpDefinition: [{
+     qualifier: '',
+     entity: {
+         name: 'ZICOURSE',
+         element: 'value'
+     },
+     distinctValues: true,
+     additionalBinding: [{
+         localElement: 'course_desc',
+         element: 'dicsription'
+     }]
+  }]
+  Course;
+  @UI:{ lineItem: [{
+          position: 50,
+          type: #STANDARD,
+          label: 'Semester'
+      }],identification: [{
+             position: 50,
+             label: 'Semester'
+         }] }
+  @Search.defaultSearchElement: true
+  @Consumption.valueHelpDefinition: [{
+     qualifier: '',
+     entity: {
+         name: 'ZISEMESTER',
+         element: 'value'
+     },
+     distinctValues: true,
+     additionalBinding: [{
+         localElement: 'semester_desc',
+         element: 'dicsription'
+     }]
+  }]
+  Semester;
+  @UI:{ lineItem: [{
+          position: 70,
+          type: #STANDARD,
+          label: 'Semresult'
+      }],identification: [{
+             position: 70,
+             label: 'Semresult'
+         }] }
+
+  @Search.defaultSearchElement: true
+  @Consumption.valueHelpDefinition: [{
+     qualifier: '',
+     entity: {
+         name: 'ZISEMRES',
+         element: 'value'
+     },
+     distinctValues: true,
+     additionalBinding: [{
+         localElement: 'semres_desc',
+         element: 'dicsription'
+     }]
+  }]
+  Semresult;
+  @UI:{ lineItem: [{
+          position: 40,
+          type: #STANDARD,
+          label: 'CourseDesc'
+      }],identification: [{
+             position: 40,
+             label: 'CourseDesc'
+         }] }
+  @Search.defaultSearchElement: true
+  course_desc;
+  @UI:{ lineItem: [{
+          position: 60,
+          type: #STANDARD,
+          label: 'SemDesc'
+      }],identification: [{
+             position: 60,
+             label: 'SemrDesc'
+         }] }
+  semester_desc;
+  @UI:{ lineItem: [{
+          position: 80,
+          type: #STANDARD,
+          label: 'SemresDesc'
+      }],identification: [{
+             position: 80,
+             label: 'SemresDesc'
+         }] }
+  semres_desc;
+  /* Associations */
+  //  _student;
+
+}
